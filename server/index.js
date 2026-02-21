@@ -3,11 +3,33 @@ const Razorpay = require('razorpay');
 const cors = require('cors');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+
+// Production CORS configuration
+const allowedOrigins = [
+    'http://localhost:5173',
+    'https://tutornovus-gif.vercel.app', // Still allow Vercel if needed
+    'https://webinar-novus.up.railway.app', // Your unified Railway URL
+    /\.vercel\.app$/
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) !== -1 || allowedOrigins.some(pattern => pattern instanceof RegExp && pattern.test(origin))) {
+            return callback(null, true);
+        } else {
+            return callback(new Error('The CORS policy for this site does not allow access from the specified Origin.'), false);
+        }
+    }
+}));
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../dist')));
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI)
@@ -111,6 +133,11 @@ app.post('/verify-payment', async (req, res) => {
         console.warn('Verification failed: Signatures do not match');
         res.status(400).json({ status: 'failure', message: 'Payment verification failed' });
     }
+});
+
+// Final catch-all for SPA routing
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 const PORT = process.env.PORT || 4242;

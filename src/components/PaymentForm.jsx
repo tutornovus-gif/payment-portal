@@ -40,8 +40,8 @@ const PaymentForm = () => {
 
     const handlePayment = async () => {
         try {
-            // Use production API URL if provided
-            const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4242';
+            // Use production API URL if provided, otherwise empty for same-domain
+            const API_URL = import.meta.env.VITE_API_URL || '';
 
             // 1. Create Order on Backend
             const response = await fetch(`${API_URL}/create-order`, {
