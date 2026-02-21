@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-green: #4ade80;
+  --secondary-blue: #3b82f6;
+  --accent-yellow: #fbbf24;
+  --dark-bg: #06110d;
+  --card-bg: #0c1f18;
+  --glass-bg: rgba(12, 31, 24, 0.85);
+  --glass-border: rgba(74, 222, 128, 0.2);
+  --text-main: #ffffff;
+  --text-muted: #94a3b8;
+  --font-main: 'Poppins', sans-serif;
+  --font-tech: 'Orbitron', sans-serif;
+  --shadow-glow: 0 0 20px rgba(74, 222, 128, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--dark-bg);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(74, 222, 128, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 20%),
+    linear-gradient(rgba(6, 17, 13, 0.9), rgba(6, 17, 13, 0.9)),
+    url('https://www.transparenttextures.com/patterns/circuit-board.png');
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: var(--font-main);
+  transition: all 0.3s ease;
+}
+
+input {
+  font-family: var(--font-main);
+}
+
+.gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at top right, rgba(74, 222, 128, 0.1), transparent),
+    radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.1), transparent);
+}
+
+.glow {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background: var(--primary-green);
+  filter: blur(150px);
+  opacity: 0.1;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-blue));
+  color: var(--dark-bg);
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-family: var(--font-tech);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(74, 222, 128, 0.4);
+  filter: brightness(1.1);
+}
+
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-glow);
+  padding: 2.5rem;
+}
