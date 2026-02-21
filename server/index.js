@@ -135,8 +135,8 @@ app.post('/verify-payment', async (req, res) => {
     }
 });
 
-// Final catch-all for SPA routing
-app.get('*', (req, res) => {
+// Final catch-all for SPA routing (Express 5 compatible)
+app.get('(.*)', (req, res) => {
     res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
