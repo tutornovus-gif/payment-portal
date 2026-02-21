@@ -135,8 +135,8 @@ app.post('/verify-payment', async (req, res) => {
     }
 });
 
-// Final catch-all for SPA routing (Express 5 / path-to-regexp v8 compatible)
-app.get('/:path*', (req, res) => {
+// Final catch-all for SPA routing (Most robust version for Express 5)
+app.use((req, res) => {
     res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
