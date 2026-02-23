@@ -15,6 +15,9 @@ const PaymentForm = () => {
         plan: 'Premium'
     });
 
+    const [isOtherYear, setIsOtherYear] = useState(false);
+    const [isOtherInterest, setIsOtherInterest] = useState(false);
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
@@ -59,7 +62,7 @@ const PaymentForm = () => {
                 key: order.key_id,
                 amount: order.amount,
                 currency: order.currency,
-                name: "Antigravity Payments",
+                name: "Novus",
                 description: "Lifetime Premium Access",
                 order_id: order.id,
                 handler: async function (response) {
@@ -182,27 +185,83 @@ const PaymentForm = () => {
                             </div>
                             <div className="form-group">
                                 <label>Year*</label>
+                                <select
+                                    name="year"
+                                    value={isOtherYear ? "Others" : formData.year}
+                                    onChange={(e) => {
+                                        const value = e.target.value;
+                                        if (value === 'Others') {
+                                            setIsOtherYear(true);
+                                            setFormData(prev => ({ ...prev, year: '' }));
+                                        } else {
+                                            setIsOtherYear(false);
+                                            setFormData(prev => ({ ...prev, year: value }));
+                                        }
+                                    }}
+                                    required
+                                >
+                                    <option value="" disabled>Select Year</option>
+                                    <option value="1st Year">1st Year</option>
+                                    <option value="2nd Year">2nd Year</option>
+                                    <option value="3rd Year">3rd Year</option>
+                                    <option value="4th Year">4th Year</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                            </div>
+                        </div>
+                        {isOtherYear && (
+                            <div className="form-group">
+                                <label>Specify Year*</label>
                                 <input
                                     type="text"
                                     name="year"
                                     value={formData.year}
                                     onChange={handleInputChange}
-                                    placeholder="3rd Year"
+                                    placeholder="Enter your year"
                                     required
                                 />
                             </div>
-                        </div>
+                        )}
                         <div className="form-group">
                             <label>Internship Interest*</label>
-                            <input
-                                type="text"
+                            <select
                                 name="internshipInterest"
-                                value={formData.internshipInterest}
-                                onChange={handleInputChange}
-                                placeholder="Web Development, AI, etc."
+                                value={isOtherInterest ? "Others" : formData.internshipInterest}
+                                onChange={(e) => {
+                                    const value = e.target.value;
+                                    if (value === 'Others') {
+                                        setIsOtherInterest(true);
+                                        setFormData(prev => ({ ...prev, internshipInterest: '' }));
+                                    } else {
+                                        setIsOtherInterest(false);
+                                        setFormData(prev => ({ ...prev, internshipInterest: value }));
+                                    }
+                                }}
                                 required
-                            />
+                            >
+                                <option value="" disabled>Select Interest</option>
+                                <option value="Web Development">Web Development</option>
+                                <option value="AI / ML">AI / ML</option>
+                                <option value="Data Science">Data Science</option>
+                                <option value="Cyber Security">Cyber Security</option>
+                                <option value="Cloud Computing">Cloud Computing</option>
+                                <option value="Hardware/IoT">Hardware/IoT</option>
+                                <option value="Others">Others</option>
+                            </select>
                         </div>
+                        {isOtherInterest && (
+                            <div className="form-group">
+                                <label>Specify Interest*</label>
+                                <input
+                                    type="text"
+                                    name="internshipInterest"
+                                    value={formData.internshipInterest}
+                                    onChange={handleInputChange}
+                                    placeholder="Enter your interest"
+                                    required
+                                />
+                            </div>
+                        )}
                         <div className="form-actions">
                             <div></div>
                             <button className="btn-primary" onClick={nextStep}>Next Step</button>
@@ -224,7 +283,7 @@ const PaymentForm = () => {
                             </div>
                             <div className="summary-item">
                                 <span>Service Fee</span>
-                                <span>$0.00</span>
+                                <span>₹0.00</span>
                             </div>
                             <div className="summary-total">
                                 <span>Total Amount</span>
@@ -255,15 +314,9 @@ const PaymentForm = () => {
                         <p style={{ color: 'var(--text-gray)', marginBottom: '2rem' }}>
                             You are about to be redirected to our PCI-compliant secure payment processor.
                         </p>
-                        <div style={{
-                            background: '#F8FAFC',
-                            padding: '1.5rem',
-                            borderRadius: '12px',
-                            marginBottom: '2rem',
-                            border: '1px dashed var(--primary-blue)'
-                        }}>
+                        <div className="checkout-amount-box">
                             <p style={{ fontSize: '0.9rem', marginBottom: '0.5rem' }}>Amount to pay:</p>
-                            <h3 style={{ fontSize: '2rem', color: 'var(--primary-blue)' }}>₹99.00</h3>
+                            <h3 style={{ fontSize: '2rem' }}>₹99.00</h3>
                         </div>
                         <div className="form-actions" style={{ flexDirection: 'column', gap: '1rem' }}>
                             <button className="btn-primary" style={{ width: '100%' }} onClick={handlePayment}>

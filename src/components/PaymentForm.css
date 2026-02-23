@@ -67,7 +67,8 @@
     font-family: var(--font-tech);
 }
 
-.form-group input {
+.form-group input,
+.form-group select {
     width: 100%;
     padding: 12px 16px;
     background: rgba(255, 255, 255, 0.03);
@@ -78,7 +79,13 @@
     transition: all 0.3s ease;
 }
 
-.form-group input:focus {
+.form-group select option {
+    background: var(--card-bg);
+    color: white;
+}
+
+.form-group input:focus,
+.form-group select:focus {
     border-color: var(--primary-green);
     background: rgba(255, 255, 255, 0.05);
     outline: none;
@@ -164,8 +171,34 @@
     font-weight: 600;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+    .card {
+        padding: 1.5rem;
+    }
+
     .form-row {
         grid-template-columns: 1fr;
+        gap: 0;
     }
+
+    .step-indicator {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Fix for the white screen amount box */
+.checkout-amount-box {
+    background: rgba(255, 255, 255, 0.03) !important;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    border: 1px dashed var(--primary-green) !important;
+}
+
+.checkout-amount-box p {
+    color: var(--text-muted) !important;
+}
+
+.checkout-amount-box h3 {
+    color: var(--primary-green) !important;
 }
