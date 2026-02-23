@@ -13,7 +13,8 @@ app.use(express.json());
 const allowedOrigins = [
     'http://localhost:5173',
     'https://tutornovus-gif.vercel.app', // Still allow Vercel if needed
-    'https://webinar-novus.up.railway.app', // Your unified Railway URL
+    'https://webinar-novus.up.railway.app',
+    'https://novusevents.site', // Your unified Railway URL
     /\.vercel\.app$/
 ];
 
