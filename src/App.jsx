@@ -40,6 +40,9 @@ function App() {
 
       <div className="app-container">
         {renderContent()}
+        <footer className="app-footer">
+          <p>&copy; 2026 Novus Solution. All rights reserved.</p>
+        </footer>
       </div>
     </div>
   )
