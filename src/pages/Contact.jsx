@@ -23,8 +23,8 @@ const Contact = () => {
                     <h2 style={{ fontSize: '1.3rem', marginBottom: '1.2rem', color: 'var(--primary-green)', fontFamily: 'var(--font-tech)', textTransform: 'uppercase' }}>Head Office</h2>
                     <p style={{ color: 'var(--text-main)', fontSize: '1.1rem' }}>
                         Novus Solutions<br />
-                        67/B3 Thillai Nagar<br />
-                        Tiruchirappalli - 620018<br />
+                        67/B1, Thirupathur Road<br />
+                        Devakottai-630302<br />
                         Tamil Nadu, India
                     </p>
                 </section>

@@ -56,7 +56,7 @@ function App() {
               <h3>NOVUS SOLUTIONS</h3>
               <p>Transforming ideas into digital solutions with cutting-edge technology.</p>
               <div className="contact-info">
-                <p>📍 67/B3 Thillai Nagar, Tiruchirappalli - 620018</p>
+                <p>📍 67/B1, Thirupathur Road, Devakottai-630302</p>
                 <p>📧 contact@novussols.in</p>
               </div>
             </div>

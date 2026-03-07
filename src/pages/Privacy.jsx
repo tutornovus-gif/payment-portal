@@ -45,6 +45,21 @@ const Privacy = () => {
                     </p>
                 </section>
 
+                <section style={{ marginBottom: '2.5rem' }}>
+                    <h2 style={{ fontSize: '1.3rem', marginBottom: '1.2rem', color: 'var(--primary-green)', fontFamily: 'var(--font-tech)', textTransform: 'uppercase' }}>4. Data Retention Policy</h2>
+                    <p style={{ color: 'var(--text-main)' }}>
+                        We retain your personal data only for as long as necessary to fulfill the purposes for which it was collected, including:
+                    </p>
+                    <ul style={{ color: 'var(--text-muted)', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
+                        <li>Active participation in the registered webinar or internship.</li>
+                        <li>Compliance with legal, accounting, or reporting requirements.</li>
+                        <li>Internal audit and verification purposes.</li>
+                    </ul>
+                    <p style={{ color: 'var(--text-main)', marginTop: '1rem' }}>
+                        Once the data is no longer required, it is securely deleted or anonymized in accordance with our security protocols.
+                    </p>
+                </section>
+
                 <div style={{ marginTop: '3rem', textAlign: 'center' }}>
                     <a href="/" className="btn-secondary" style={{ textDecoration: 'none' }}>
                         Return Home
