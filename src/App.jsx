@@ -6,6 +6,11 @@ import Success from './pages/Success'
 import Cancel from './pages/Cancel'
 import Banner from './components/Banner'
 import Terms from './pages/Terms'
+import About from './pages/About'
+import Contact from './pages/Contact'
+import Privacy from './pages/Privacy'
+import Refund from './pages/Refund'
+import Programs from './pages/Programs'
 
 function App() {
   const [path, setPath] = useState(window.location.pathname);
@@ -22,6 +27,11 @@ function App() {
       case '/success': return <Success />;
       case '/cancel': return <Cancel />;
       case '/terms': return <Terms />;
+      case '/about': return <About />;
+      case '/contact': return <Contact />;
+      case '/privacy': return <Privacy />;
+      case '/refund': return <Refund />;
+      case '/programs': return <Programs />;
       default: return (
         <>
           <Hero />
@@ -40,8 +50,32 @@ function App() {
 
       <div className="app-container">
         {renderContent()}
-        <footer className="app-footer">
-          <p>&copy; 2026 Novus Solution. All rights reserved.</p>
+        <footer className="footer-v2">
+          <div className="footer-grid">
+            <div className="footer-brand">
+              <h3>NOVUS SOLUTIONS</h3>
+              <p>Transforming ideas into digital solutions with cutting-edge technology.</p>
+              <div className="contact-info">
+                <p>📍 67/B3 Thillai Nagar, Tiruchirappalli - 620018</p>
+                <p>📧 contact@novussols.in</p>
+              </div>
+            </div>
+            <div className="footer-links">
+              <h4>Quick Links</h4>
+              <a href="/about">About Us</a>
+              <a href="/programs">Programs</a>
+              <a href="/contact">Contact</a>
+            </div>
+            <div className="footer-links">
+              <h4>Compliance</h4>
+              <a href="/terms">Terms & Conditions</a>
+              <a href="/privacy">Privacy Policy</a>
+              <a href="/refund">Refund Policy</a>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <p>&copy; 2026 Novus Solutions. All rights reserved.</p>
+          </div>
         </footer>
       </div>
     </div>
